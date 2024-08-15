@@ -29,6 +29,13 @@ public class BooksController:ControllerBase
      return Ok(response);
     }
 
+     [HttpGet("aggregates")]
+    public async Task<IActionResult> GetAggregatesAsync(){
+     var response =  await _bookService.GetAggregatesAsync();
+     return Ok(response);
+    }
+
+
     [HttpGet("{id}")]
     public async Task<IActionResult> GetAsync([FromRoute] string id) {
 

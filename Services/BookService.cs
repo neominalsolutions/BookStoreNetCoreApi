@@ -83,6 +83,43 @@ public class BookService
     return books.Select(x=> ToDto(x)).ToList();
   }
 
+
+ // Aggregation İşlemleri
+ public async Task<List<BooksWithCategoryDto>> GetAggregatesAsync() {
+
+  /*
+new BsonDocument("$match", new BsonDocument{ 
+      {"title",new BsonDocument("$regex","/al/i")}
+    }),
+  */
+  var pipeline = new BsonDocument[]
+  {
+  
+    new BsonDocument("$lookup", new BsonDocument {
+        {"from","categories"},
+        {"localField","category_ids"},
+        {"foreignField","_id"},
+        {"as","categories"}
+      
+    }),
+    new BsonDocument("$project", new BsonDocument{
+      {"_id",new BsonDocument("$toString","$_id")},
+      {"title",1},
+      {"category_names", new BsonDocument {
+        {"$map", new BsonDocument {
+          {"input","$categories"},
+          {"as","item"},
+          {"in","$$item.name"}
+        }
+      }}
+    }})
+  };
+
+   var response = await _bookCollection.Aggregate<BooksWithCategoryDto>(pipeline).ToListAsync();
+
+   return response;
+ }
+
   private BookDto ToDto(Book book)
   {
     return new BookDto
