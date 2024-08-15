@@ -1,3 +1,5 @@
+using MongoDB.Driver;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -5,6 +7,10 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddControllers();
+
+builder.Services.AddSingleton<IMongoClient>(x=> new MongoClient(builder.Configuration.GetConnectionString("MongoDbConnection")));
+
+builder.Services.AddSingleton<BookService>();
 
 var app = builder.Build();
 

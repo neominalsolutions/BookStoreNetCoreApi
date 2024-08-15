@@ -44,3 +44,4 @@ C:\Users\Administrator\Desktop\Apps\BookStoreNetCoreApi\obj\Debug\net8.0\refint\
 C:\Users\Administrator\Desktop\Apps\BookStoreNetCoreApi\obj\Debug\net8.0\BookStoreNetCoreApi.pdb
 C:\Users\Administrator\Desktop\Apps\BookStoreNetCoreApi\obj\Debug\net8.0\BookStoreNetCoreApi.genruntimeconfig.cache
 C:\Users\Administrator\Desktop\Apps\BookStoreNetCoreApi\obj\Debug\net8.0\ref\BookStoreNetCoreApi.dll
+C:\Users\Administrator\Desktop\Apps\BookStoreNetCoreApi\obj\Debug\net8.0\BookStoreNetCoreApi.sourcelink.json
