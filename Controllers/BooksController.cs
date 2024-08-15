@@ -6,13 +6,13 @@ using Microsoft.AspNetCore.Mvc;
 
 [ApiController]
 [Route("api/[controller]")]
-public class BooksController
+public class BooksController:ControllerBase
 {
   
 
     [HttpGet]
-    public String GetBooks() {
-        return "Ok";
+    public IActionResult GetBooks() {
+        return Ok();
     }
     
 }
